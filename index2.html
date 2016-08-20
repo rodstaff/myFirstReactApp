@@ -3,7 +3,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>I'm in a React app!</title>
+    <title>This is a React app!</title>
   </head>
   <body>
     <div id="react-app"></div>
@@ -12,8 +12,8 @@
     <script src="https://cdn.jsdelivr.net/react/0.14.0-rc1/react-dom.js"></script>
     <script> 
       var contacts = [
-        {key: 1, name: "Frank Sinatra", email: "frank@franksinatra.com", description: "Front-end Unicorn"},
-        {key: 2, name: "Joe Dimaggio", email: "joe@dimaggio.com"},
+        {key: 1, name: "Frank Sinatra", email: "frank@franksinatra.com", description: "Front-end Honcho"},
+        {key: 2, name: "Joe Dimaggio", email: "joe@joedimaggio.com"},
         {key: 3, name: "John"},
       ]
 
@@ -28,7 +28,7 @@
     // I wrap mult-line return statements in parentheses to avoid the
     // inevitable bugs caused by forgetting that JavaScript will throw away
     // the final lines when possible. The parentheses are not strictly
-    // necessary.
+    // necessary.  (Comments by JamesKNelson)
           return (
             React.createElement('li', {},
               React.createElement('h2', {}, this.props.name),
