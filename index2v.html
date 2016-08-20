@@ -17,6 +17,8 @@
         {key: 3, name: "John"}
       ]
 
+      var rce = React.createElement
+
       var ContactItem = React.createClass({
         propTypes: {
           name: React.PropTypes.string.isRequired,
@@ -30,10 +32,10 @@
     // the final lines when possible. The parentheses are not strictly
     // necessary.  (Comments by JamesKNelson)
           return (
-            React.createElement('li', {},
-              React.createElement('h2', {}, this.props.name),
-              React.createElement('a', {href: 'mailto:'+this.props.email}, this.props.email),
-              React.createElement('div', {}, this.props.description)
+            rce('li', {},
+              rce('h2', {}, this.props.name),
+              rce('a', {href: 'mailto:'+this.props.email}, this.props.email),
+              rce('div', {}, this.props.description)
             )
           )
         }
@@ -41,12 +43,12 @@
 
       var contactItemElements = contacts
         .filter(function(contact) { return contact.email })
-        .map(function(contact) { return React.createElement(ContactItem, contact) })
+        .map(function(contact) { return rce(ContactItem, contact) })
 
       var rootElement =
-        React.createElement('div', {}, 
-          React.createElement('h1', {}, "Contacts"),
-          React.createElement('ul', {}, contactItemElements)
+        rce('div', {}, 
+          rce('h1', {}, "Contacts"),
+          rce('ul', {}, contactItemElements)
         )
 
       ReactDOM.render(rootElement, document.getElementById('react-app'))

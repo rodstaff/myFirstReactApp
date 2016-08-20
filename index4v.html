@@ -14,6 +14,8 @@
  /*
  * Components
  */
+      var rce = React.createElement
+
       var ContactItem = React.createClass({
         propTypes: {
           name: React.PropTypes.string.isRequired,
@@ -23,10 +25,10 @@
 
         render: function() {
           return (
-            React.createElement('li', {className: 'ContactItem'},
-              React.createElement('h2', {className: 'ContactItem-name'}, this.props.name),
-              React.createElement('a', {className: 'ContactItem-email', href: 'mailto:'+this.props.email}, this.props.email),
-              React.createElement('div', {className: 'ContactItem-description'}, this.props.description)
+            rce('li', {className: 'ContactItem'},
+              rce('h2', {className: 'ContactItem-name'}, this.props.name),
+              rce('a', {className: 'ContactItem-email', href: 'mailto:'+this.props.email}, this.props.email),
+              rce('div', {className: 'ContactItem-description'}, this.props.description)
             )
           )
         }
@@ -39,22 +41,22 @@
 
         render: function() {
           return (
-            React.createElement('form', {className: 'ContactForm'},
-              React.createElement('input', {
+            rce('form', {className: 'ContactForm'},
+              rce('input', {
                 type: 'text',
                 placeholder: 'Name (required)',
                 value: this.props.contact.name,
               }),
-              React.createElement('input', {
+              rce('input', {
                 type: 'email',
                 placeholder: 'Email',
                 value: this.props.contact.email,
               }),
-              React.createElement('textarea', {
+              rce('textarea', {
                 placeholder: 'Description',
                 value: this.props.contact.description,
               }),
-              React.createElement('button', {type: 'submit'}, "Add Contact")
+              rce('button', {type: 'submit'}, "Add Contact")
             )
           )
         }
@@ -68,13 +70,13 @@
         render: function() {
           var contactItemElements = this.props.contacts
             .filter(function(contact) { return contact.email })
-            .map(function(contact) { return React.createElement(ContactItem, contact) })
+            .map(function(contact) { return rce(ContactItem, contact) })
 
           return (
-            React.createElement('div', {className: 'ContactView'},
-              React.createElement('h1', {className: 'ContactView-title'}, "Contacts"),
-              React.createElement('ul', {className: 'ContactView-list'}, contactItemElements),
-              React.createElement(ContactForm, {contact: this.props.newContact})
+            rce('div', {className: 'ContactView'},
+              rce('h1', {className: 'ContactView-title'}, "Contacts"),
+              rce('ul', {className: 'ContactView-list'}, contactItemElements),
+              rce(ContactForm, {contact: this.props.newContact})
             )
           )
         }
@@ -93,7 +95,7 @@
  * Entry point
  */
       ReactDOM.render(
-        React.createElement(ContactView, {
+        rce(ContactView, {
          contacts: contacts,
          newContact: newContact
         }),
@@ -103,11 +105,11 @@
   </body>
 </html>
 
-  <style>
+<style>
   body {
   font-family: Tahoma, sans-serif;
   margin: 0;
-}
+  }
 
 .ContactView-title {
   font-size: 24px;
@@ -156,4 +158,4 @@
   border: 1px solid #888;
   font-size: 14px;
 }
-  </style>
+</style>
